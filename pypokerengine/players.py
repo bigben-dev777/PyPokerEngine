@@ -47,29 +47,29 @@ class BasePokerPlayer(object):
     valid_actions, hole_card, round_state = self.__parse_ask_message(message)
     return self.declare_action(valid_actions, hole_card, round_state)
 
-  def receive_notification(self, message):
-    """Called from Dealer when notification received from RoundManager"""
-    msg_type = message["message_type"]
+  # def receive_notification(self, message):
+  #   """Called from Dealer when notification received from RoundManager"""
+  #   msg_type = message["message_type"]
 
-    if msg_type == "game_start_message":
-      info = self.__parse_game_start_message(message)
-      self.receive_game_start_message(info)
+  #   if msg_type == "game_start_message":
+  #     info = self.__parse_game_start_message(message)
+  #     self.receive_game_start_message(info)
 
-    elif msg_type == "round_start_message":
-      round_count, hole, seats = self.__parse_round_start_message(message)
-      self.receive_round_start_message(round_count, hole, seats)
+  #   elif msg_type == "round_start_message":
+  #     round_count, hole, seats = self.__parse_round_start_message(message)
+  #     self.receive_round_start_message(round_count, hole, seats)
 
-    elif msg_type == "street_start_message":
-      street, state = self.__parse_street_start_message(message)
-      self.receive_street_start_message(street, state)
+  #   elif msg_type == "street_start_message":
+  #     street, state = self.__parse_street_start_message(message)
+  #     self.receive_street_start_message(street, state)
 
-    elif msg_type == "game_update_message":
-      new_action, round_state = self.__parse_game_update_message(message)
-      self.receive_game_update_message(new_action, round_state)
+  #   elif msg_type == "game_update_message":
+  #     new_action, round_state = self.__parse_game_update_message(message)
+  #     self.receive_game_update_message(new_action, round_state)
 
-    elif msg_type == "round_result_message":
-      winners, hand_info, state = self.__parse_round_result_message(message)
-      self.receive_round_result_message(winners, hand_info, state)
+  #   elif msg_type == "round_result_message":
+  #     winners, hand_info, state = self.__parse_round_result_message(message)
+  #     self.receive_round_result_message(winners, hand_info, state)
 
 
   def __build_err_msg(self, msg):
